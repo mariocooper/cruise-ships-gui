@@ -1,0 +1,22 @@
+{
+  "name": "cruise-ships",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "\"jest\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mariocooper/cruise-ships.git"
+  },
+  "author": "Mario Cooper",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mariocooper/cruise-ships/issues"
+  },
+  "homepage": "https://github.com/mariocooper/cruise-ships#readme",
+  "devDependencies": {
+    "jest": "^29.3.1"
+  }
+}
