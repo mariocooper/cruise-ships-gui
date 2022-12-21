@@ -10,22 +10,25 @@ describe('Ship', () => {
     
     beforeEach(() => {
       dover = {
-        addShip: jest.fn(),
-        removeShip: jest.fn(),
-        name: 'Dover',
-        ships: []
-      };
-    
-      calais = {
-        addShip: jest.fn(),
-        removeShip: jest.fn(),
-        name: 'Calais',
-        ships: []
-      };
-    
-      itinerary = new Itinerary([dover, calais]);
-      ship = new Ship(itinerary);
-    });
+         addShip: jest.fn(),
+         removeShip: jest.fn(),
+         name: 'Dover',
+         ships: []
+       };
+     
+       calais = {
+         addShip: jest.fn(),
+         removeShip: jest.fn(),
+         name: 'Calais',
+         ships: []
+       };
+     
+       itinerary = {
+         ports: [dover, calais]
+       };
+     
+       ship = new Ship(itinerary);
+     });
 
     it('can be instantiated', () => { 
     expect(ship).toBeInstanceOf(Object);
@@ -43,6 +46,10 @@ describe('Ship', () => {
     });
 
     it('can dock at a different port', () => {
+      itinerary = {
+        ports: [dover, calais]
+      };
+
       ship.setSail();
       ship.dock();
       
