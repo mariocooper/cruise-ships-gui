@@ -50,7 +50,8 @@
       const nextPortElement = document.querySelector(`[data-port-index='${nextPortIndex}']`);
 
       if (!nextPortElement) {
-        return alert('End of the line!');
+        return this.renderMessage(`Cannot depart. ${ship.currentPort.name} is the end of the line!`);
+
       } else {
         const shipElement = document.querySelector('#ship');
         const sailInterval = setInterval(() => {
@@ -58,12 +59,24 @@
           if (shipLeft === (nextPortElement.offsetLeft - 32)) {
             ship.setSail();
             ship.dock();
+            this.renderMessage(`Arriving at ${ship.currentPort.name}`);
             clearInterval(sailInterval);
           } else {
             shipElement.style.left = `${shipLeft + 1}px`;
           }
         }, 20);
       }
+    },
+
+    renderMessage(message) {
+      const messageElement = document.createElement('div');
+      messageElement.id = 'message';
+      messageElement.innerHTML = message;
+      const viewport = document.querySelector('#viewport');
+      viewport.appendChild(messageElement);
+      setTimeout(() => {
+        viewport.removeChild(messageElement); 
+      }, 2000);
     }
   };
 
