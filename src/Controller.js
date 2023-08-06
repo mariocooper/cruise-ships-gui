@@ -53,13 +53,14 @@
         return this.renderMessage(`Cannot depart. ${ship.currentPort.name} is the end of the line!`);
 
       } else {
+        this.renderMessage(`Now departing ${ship.currentPort.name}`);
         const shipElement = document.querySelector('#ship');
         const sailInterval = setInterval(() => {
           const shipLeft = parseInt(shipElement.style.left, 10);
           if (shipLeft === (nextPortElement.offsetLeft - 32)) {
             ship.setSail();
             ship.dock();
-            this.renderMessage(`Arriving at ${ship.currentPort.name}`);
+            this.renderMessage(`Now arriving at ${ship.currentPort.name}`);
             clearInterval(sailInterval);
           } else {
             shipElement.style.left = `${shipLeft + 1}px`;
